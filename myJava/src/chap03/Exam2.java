@@ -24,41 +24,65 @@ public class Exam2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner sc1 = new Scanner(System.in);
-		Scanner sc2 = new Scanner(System.in);
+//		Scanner sc1 = new Scanner(System.in);
+//		Scanner sc2 = new Scanner(System.in);
+//		
+//		System.out.print("계산하실 금액을 입력하세요 >> ");
+//		int pay = sc1.nextInt();
+//		
+//		System.out.println("구매하실 금액을 입력하세요 >> ");
+//		int buy = sc2.nextInt();
+//		
+//		int charge = pay - buy;
+//		System.out.println("거스름돈 : " + charge);
+//		
+//		int obeak = charge / 500;
+//		int beak = charge % 500 / 100;
+//		int osib = charge % 500 % 100 / 50;
+//		int sib = charge % 500 % 100 % 50 / 10;
+//		int rest = charge % 500 % 100 % 10 % 10 % 10;
+//		
+//		System.out.println("500원짜리 동전 : " + obeak+"개");
+//		System.out.println("100원짜리 동전 : " + beak+"개");
+//		System.out.println("50원짜리 동전 : " + osib+"개");
+//		System.out.println("10원짜리 동전 : " + sib+"개");
+//		System.out.println("나머지 거스름돈 : " + rest+"원");
+//		
+//		System.out.println("--------------------------");
+//		
+//		System.out.println("500원짜리 동전 : " + charge / 500+"개");
+//		System.out.println("100원짜리 동전 : " + charge % 500 / 100+"개");
+//		System.out.println("50원짜리 동전 : " + charge % 500 % 100 / 50+"개");
+//		System.out.println("10원짜리 동전 : " + charge % 500 % 100 % 50 / 10+"개");
+//		System.out.println("나머지 거스름돈 : " + charge % 500 % 100 % 10 % 10 % 10+"원");
+//
+//		
+//		sc1.close();
+//		sc2.close();
 		
-		System.out.print("계산하실 금액을 입력하세요 >> ");
-		int pay = sc1.nextInt();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\n\t계산 하실 금액을 입력하세요 : ");
+		int money = sc.nextInt();
+		System.out.println("\t구매하신 금액을 입력하세요 : ");
+		money -= sc.nextInt();
 		
-		System.out.println("구매하실 금액을 입력하세요 >> ");
-		int buy = sc2.nextInt();
+		sc.close();
 		
-		int charge = pay - buy;
-		System.out.println("거스름돈 : " + charge);
+		System.out.printf("\n\t거스름 돈 : %d원\n", money);
 		
-		int obeak = charge / 500;
-		int beak = charge % 500 / 100;
-		int osib = charge % 500 % 100 / 50;
-		int sib = charge % 500 % 100 % 50 / 10;
-		int rest = charge % 500 % 100 % 10 % 10 % 10;
+		System.out.printf("\t500원짜리 동전 : %d개\n", money / 500);
 		
-		System.out.println("500원짜리 동전 : " + obeak+"개");
-		System.out.println("100원짜리 동전 : " + beak+"개");
-		System.out.println("50원짜리 동전 : " + osib+"개");
-		System.out.println("10원짜리 동전 : " + sib+"개");
-		System.out.println("나머지 거스름돈 : " + rest+"원");
-		
-		System.out.println("--------------------------");
-		
-		System.out.println("500원짜리 동전 : " + charge / 500+"개");
-		System.out.println("100원짜리 동전 : " + charge % 500 / 100+"개");
-		System.out.println("50원짜리 동전 : " + charge % 500 % 100 / 50+"개");
-		System.out.println("10원짜리 동전 : " + charge % 500 % 100 % 50 / 10+"개");
-		System.out.println("나머지 거스름돈 : " + charge % 500 % 100 % 10 % 10 % 10+"원");
+		money %= 500;
+		System.out.printf("\t100원짜리 동전 : %d개\n", money / 100);
 
+		money %= 100;
+		System.out.printf("\t50원짜리 동전 : %d개\n", money / 50);
 		
-		sc1.close();
-		sc2.close();
+		money %= 50;
+		System.out.printf("\t10원짜리 동전 : %d개\n", money / 10);
+		
+		money %= 10;
+		System.out.printf("\t나머지 거스름돈 : %원\n", money % 10);
 		
 		
 	}

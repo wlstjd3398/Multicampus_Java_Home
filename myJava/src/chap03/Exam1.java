@@ -16,14 +16,25 @@ public class Exam1 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("하나의 실수를 입력하세요 >> ");
+//		double sil = sc.nextDouble();
+//		
+//		System.out.println("버림 : " + (int)sil);
+//		System.out.printf("반올림 : %.0f", sil);
+//		
+//		sc.close();
+		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("하나의 실수를 입력하세요 >> ");
-		double sil = sc.nextDouble();
 		
-		System.out.println("버림 : " + (int)sil);
-		System.out.printf("반올림 : %.0f", sil);
+		System.out.println("\n\t하나의 실수를 입력하세요");
 		
+		double num = sc.nextDouble();
 		sc.close();
+
+		
+		System.out.println("\n\t버림 : "+ (int)num);
+		System.out.println("\t반올림 : "+ (int)(num + 0.5));
 		
 	}
 
