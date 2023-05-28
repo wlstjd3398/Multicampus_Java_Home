@@ -25,33 +25,32 @@ public class Exam4 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner sc1 = new Scanner(System.in);
-		Scanner sc2 = new Scanner(System.in);
-		System.out.printf("년도와 월을 입력하세요 : ");
-		int year = sc1.nextInt();
-		int month = sc2.nextInt();
+		Scanner sc = new Scanner(System.in);
+		System.out.printf("년도와 월을 입력하세요");
 		
+		int year = sc.nextInt();
+		int month = sc.nextInt();
 		
-		if(year) {
-			
-		}
-			
-		switch() {
-		case 1 : case 3 : case 5 : case 7 : case 8 : case 10 : case 12 :
-			System.out.println("31일");
+		sc.close();
+		
+		switch(month) {
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			System.out.println(year + " " + month +"월의 마지막일자는 31일입니다");
 			break;
-		case 4 : case 6 : case 9 : case 11 :
-			System.out.println("30일");
+			
+		case 4: case 6: case 9: case 11:
+			System.out.println(year + " " + month +"월의 마지막일자는 30일입니다");
 			break;
-		case 2 :
+			
+		case 2:
 			if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-				System.out.println("29일");
+				System.out.println(year + " " + month +"월의 마지막일자는 윤년 29일입니다");
 			}else {
-				System.out.println("28일");
+				System.out.println(year + " " + month +"월의 마지막일자는 평년 28일입니다");
 			}
+			break;
+		
 		}
-		
-		
 		
 	}
 
