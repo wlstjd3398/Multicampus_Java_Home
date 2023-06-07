@@ -7,6 +7,8 @@ public class CircleTest {
 
 		Circle circle = new Circle();
 		
+		circle.pi = 3.141592;
+		
 		circle.setRadius(5);
 		System.out.printf("반지름이 5인 원의 넓이는 %.2f 입니다 \n", circle.getArea());
 		
