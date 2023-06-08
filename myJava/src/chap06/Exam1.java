@@ -27,76 +27,27 @@ import java.util.Scanner;
 
 public class Exam1 {
 	
-	
 	void printExam(char ch, int count) {
 		for(int i=0; i<count; i++) {
 			System.out.print(ch);
 		}
-		
-		System.out.println("\n\t하나의 실수를 입력하세요");
-		
-		for(int i=0; i<count; i++) {
-			System.out.print(ch);
-		}
+		System.out.print("\n\t하나의 실수를 입력하세요: ");
 	}
 	
+	int printUnder(double num) {
+		return (int)num;
+	}
 	
-	int printUpper(int num) {
+	int printMiddle(double num) {
+		return (int)(num + 0.5);
+	}
+	
+	int printUpper(double num) {
 		if(num == (int)num) {
-			System.out.println("\t올림 : " + (int)num);
+			return (int)num;
 		}else {
-			System.out.println("\t올림 : " + (int)(num + 1));
+			return (int)(num + 1);
 		}
-	}
-	
-	
-	int printMiddle(int num) {
-		System.out.println("\t반올림 : "+ (int)(num + 0.5));
-	}
-	
-	
-	int printUnder(int num) {
-		System.out.println("\n\t버림 : "+ (int)num);
-	}
-	
-
-
-	
-	
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		Exam1 ex1 = new Exam1();
-		ex1.printExam('=', 40);
-		
-		ex1.printUnder(0);
-		ex1.printMiddle(0);
-		ex1.printUpper(0);
-		
-		
-		
-		
-		
-//		Scanner sc = new Scanner(System.in);
-//		
-//		System.out.println("\t하나의 실수를 입력하세요");
-//		
-//		double num = sc.nextDouble();
-//		sc.close();
-//		
-//		System.out.println("\n\t버림 : "+ (int)num);
-//		System.out.println("\t반올림 : "+ (int)(num + 0.5));
-//		
-//		if(num == (int)num) {
-//			System.out.println("\t올림 : " + (int)num);
-//		}else {
-//			System.out.println("\t올림 : " + (int)(num + 1));
-//		}
-		
-		
-		
-		
 	}
 
 }
