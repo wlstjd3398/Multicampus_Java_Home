@@ -16,9 +16,6 @@ public class DateTest1 {
 
 		Scanner sc = new Scanner(System.in);
 		int year, month, day;
-		int count = 0;
-		int [] monthLastDays = {-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-		String[] days = {"일", "월", "화", "수", "목", "금", "토"};
 		
 		System.out.print("년, 월, 일을 입력하세요: ");
 		year = sc.nextInt();
@@ -26,20 +23,11 @@ public class DateTest1 {
 		day = sc.nextInt();
 		sc.close();
 		
-		Date1 date1 = new Date1();
-		date1.AllDays(year, count);
-		date1.LeapDays(year, monthLastDays);
-		date1.monthDays(month, count, monthLastDays);
-		
-		//일수 구하기
-		count += day;
-				
-		//요일 구하기
-		count %= 7;
-		
-		System.out.printf("%d년 %d월 %d일은 %s요일입니다.\n", year, month, day, days[count]);
-		
+        Date1 date1 = new Date1();
+        String dayOfWeek = date1.getDayOfWeek(year, month, day);
 
-	}
+        System.out.printf("%d년 %d월 %d일은 %s요일입니다.\n", year, month, day, dayOfWeek);
+    }
+
 	
 }
