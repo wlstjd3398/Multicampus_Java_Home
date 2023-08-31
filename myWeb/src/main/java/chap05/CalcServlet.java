@@ -33,7 +33,8 @@ public class CalcServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.append("<html><body><h2>계산기 서블릿</h2><hr />").append("계산결과: "+result+"</body></html>");
+		out.append("<html><body><h2>계산기 서블릿</h2><hr />")
+		.append("계산결과: "+result+"</body></html>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
