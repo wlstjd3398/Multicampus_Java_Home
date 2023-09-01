@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>loginProc.html</title>
+    <meta charset="UTF-8" />
+    <script>
+    /*
+        login.html 로 부터 보내온 로그인 요청에 포함된 파라미터를 읽어 미리 약속된 ID, PASSWD 값과 비교하여
+        일치하면 환영 메시지를 출력하고, 일치하지 않는 경우 메시지와 함께 다시 로그인 페이지로 되돌리는 코드를
+        작성하세요. 
+    */
+    
+    const ID = 'longlee';
+    const PASSWD = '6789';
+
+    var param = location.search;
+    param = param.substr(1);
+    param = param.split('&');
+
+    var param1 = param[0];
+    var param2 = param[1];
+
+    param1 = param1.split('=');
+    param2 = param2.split('=');
+
+    var message = '';
+    var result = false;
+    if(param1[0] === 'id' && param1[1] === ID && param2[0] === 'passwd' && param2[1] === PASSWD) {
+        message = '<h4>' + param1[1] + '님의 방문을 환영합니다.</h4>';
+        result = true;
+    }
+    else {
+        message = '로그인에 실패했습니다.\n다시 시도해주세요.';
+    }
+
+    function init() {
+        if(result) {
+            document.body.innerHTML += message;
+        }
+        else {
+            alert(message);
+            location.href = 'login.html';
+        }
+    }
+
+    window.onload = init;
+    </script>
+</head>
+
+<body>
+    <h1>로그인 성공!</h1>
+    <hr />
+</body>
+</html>
