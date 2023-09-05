@@ -1,9 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<jsp:useBean id="loginBean" class="chap07.LoginBean" />
+<jsp:setProperty name="loginBean" property="*" />
+
 <%
-	String msg = "";
-	if(session.getAttribute("msg") != null){
-		msg = (String)session.getAttribute("msg");
+	if(request.getMethod().equals("POST")){
+		if(loginBean.isLogin()){
+			session.setAttribute("userId", loginBean.getId());
+			response.sendRedirect("selProduct.jsp");
+		}
 	}
 %>
 
@@ -18,7 +23,7 @@
     <h1>로그인</h1>
     <hr />
     
-    <form method="POST" action="loginProc.jsp">
+    <form method="POST">
 	<fieldset>
     	<legend>로그인</legend>
 	    <label for="id">아이디</label>
@@ -29,6 +34,5 @@
     </fieldset>
     </form>
     
-    <h4><%= msg %></h4>
 </body>
 </html>

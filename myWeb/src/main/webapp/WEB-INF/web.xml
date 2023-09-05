@@ -9,4 +9,33 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+  	<param-name>adminID</param-name>
+  	<param-value>seong</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>adminPasswd</param-name>
+  	<param-value>6789</param-value>
+  </context-param>
+  
+  <servlet>
+  	<servlet-name>jspConfig</servlet-name>
+  	<jsp-file>/built-in_object/config.jsp</jsp-file>
+  	<init-param>
+  		<param-name>username</param-name>
+  		<param-value>김민재</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>gender</param-name>
+  		<param-value>남자</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>jspConfig</servlet-name>
+  	<url-pattern>/built-in_object/jspConfig</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
