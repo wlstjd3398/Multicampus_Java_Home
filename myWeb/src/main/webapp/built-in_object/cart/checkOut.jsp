@@ -6,14 +6,14 @@
 	@SuppressWarnings("unchecked")
 	ArrayList<String> cart = (ArrayList<String>)session.getAttribute("cart");
 	
-	if(cart == null){
-		products = "선택한 상품이 존재하지 않습니다";
-	}else{
+	if(cart != null && !cart.isEmpty()){
 		for(String product : cart){
 			products +="<h4>" + product + "</h4>";
 		}
 		
 		cart.clear();
+	}else{
+		products = "선택한 상품이 존재하지 않습니다";
 	}
 
 %>
