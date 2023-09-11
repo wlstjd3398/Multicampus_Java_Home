@@ -2,6 +2,7 @@ package chap08;
 
 public class Product {
 
+	// 멤버변수 = 필드
 	private String id;
 	private String name;
 	private String maker;

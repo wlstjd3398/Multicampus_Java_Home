@@ -11,10 +11,9 @@ public class ProductService {
 	public ProductService() {
 		this.products = new HashMap<String, Product>();
 		
-		products.put("101", new Product("101", "삼성전자", "갤럭시 노트10", 1200000, "2023.08.20"));
-		products.put("102", new Product("102", "애플", "아이폰14", 1600000, "2023.05.10"));
-		products.put("103", new Product("103", "LG전자", "V50", 900000, "2023.07.25"));
-	
+		products.put("101", new Product("101", "갤럭시 노트10", "삼성전자", 1200000, "2023.08.20"));
+		products.put("102", new Product("102", "아이폰14", "애플", 1600000, "2023.05.10"));
+		products.put("103", new Product("103", "V50", "LG전자", 900000, "2023.07.25"));
 	}
 		
 	// 값들만 모아서 collection으로 반환하고 ArrayList에 값들을 넣어줌

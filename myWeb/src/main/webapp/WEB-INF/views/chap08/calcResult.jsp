@@ -14,6 +14,6 @@
 	<h4>result: ${requestScope.result }</h4>
 
 	<!-- 계산 폼으로 이동하는 링크를 생성하세요 -->
-	<a href="./calcController.jsp">계산하기</a>
+	<a href="/myWeb/chap08/calcController">계산하기</a>
 </body>
 </html>

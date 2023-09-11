@@ -21,7 +21,7 @@
 
 	<hr />
 	
-	<a href="productController.jsp?action=list">상품 목록</a>
+	<a href="productController2?action=list">상품 목록</a>
 
 </body>
 </html>
