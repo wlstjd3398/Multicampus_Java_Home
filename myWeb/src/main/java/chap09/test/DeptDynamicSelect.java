@@ -1,4 +1,4 @@
-package chap09;
+package chap09.test;
 
 import java.sql.*;
 import java.util.Scanner;

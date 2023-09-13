@@ -1,8 +1,8 @@
-package chap09;
+package chap09.test;
 
 import java.sql.*;
 
-public class DeptSelect {
+public class DeptSelect2 {
 
 	public static void main(String[] args) {
 		String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
@@ -17,7 +17,7 @@ public class DeptSelect {
 			stmt = conn.createStatement();
 			String sql = "select * from dept where deptno = 20";
 			rs = stmt.executeQuery(sql);
-			
+			DeptDO deptDO = new DeptDO();
 //			 기존에는 반복되는 행의 수만큼 반복하고 끝냄
 //			while(rs.next()) {
 //			
@@ -27,11 +27,11 @@ public class DeptSelect {
 			
 			// 하나의 행을 가져옴
 			if(rs.next()) {
-				deptno = rs.getInt("deptno");
-				dname = rs.getString("dname");
-				loc = rs.getString("loc");
+				deptDO.setDeptno(rs.getInt("deptno"));
+				deptDO.setDname(rs.getString("dname"));
+				deptDO.setLoc(rs.getString("loc"));
 			
-				System.out.println("부서번호: " + deptno + ", 부서명: " + dname + ", 부서위치: " + loc);
+				System.out.println("부서번호: " + deptDO.getDeptno() + ", 부서명: " + deptDO.getDname() + ", 부서위치: " + deptDO.getLoc());
 			}
 
 			
