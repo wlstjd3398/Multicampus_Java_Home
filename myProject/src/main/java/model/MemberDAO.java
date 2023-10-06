@@ -58,4 +58,67 @@ public class MemberDAO {
 		return member;
 	}
 	
+	
+	public int insertMember(MemberDO member) throws Exception {
+		int rowCount = 0;
+		boolean isIdDuplicate = false;
+		
+		try {
+			this.conn.setAutoCommit(false);
+			
+			this.sql = "select id from member where id = ?";
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, member.getId());			
+			this.rs = pstmt.executeQuery();
+			
+			if(!rs.next()) {
+				this.sql = "insert into member (id, passwd, name) values (?, ?, ?)";
+				pstmt = conn.prepareStatement(sql);			
+				pstmt.setString(1, member.getId());
+				pstmt.setString(2, member.getPasswd());
+				pstmt.setString(3, member.getName());
+				
+				rowCount = pstmt.executeUpdate();
+				this.conn.commit();
+			}
+			else {
+				isIdDuplicate = true;
+				this.conn.rollback();
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {			
+			try {
+				this.conn.setAutoCommit(true);
+				
+				if(!pstmt.isClosed()) {
+					pstmt.close();
+				}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(isIdDuplicate) {
+			throw new Exception("아이디가 중복되었습니다.");
+		}
+		return rowCount;
+	}
+	
+	
+	public void closeConn() {
+		try {
+			if(!conn.isClosed()) {
+				conn.close();
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
