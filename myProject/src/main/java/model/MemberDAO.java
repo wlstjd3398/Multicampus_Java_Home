@@ -109,6 +109,32 @@ public class MemberDAO {
 		return rowCount;
 	}
 	
+	public ArrayList<MemberDO> getAllMembers() {
+		ArrayList<MemberDO> memberList = new ArrayList<MemberDO>();
+		this.sql = "select id, name, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as regdate"
+				+ " from member order by regdate";
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			MemberDO member = null;
+			
+			while(rs.next()) {
+				member = new MemberDO();
+				
+				member.setId(this.rs.getString("id"));
+				member.setName(this.rs.getString("name"));
+				member.setRegdate(this.rs.getString("regdate"));
+			
+				memberList.add(member);
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return memberList;
+	}
 	
 	public void closeConn() {
 		try {
