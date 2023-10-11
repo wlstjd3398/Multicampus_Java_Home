@@ -21,5 +21,25 @@
 		request.setAttribute("memberList", memberDAO.getAllMembers());
 		
 		pageContext.forward(viewPath + "memberList.jsp");
+		
+	}else if(command != null && command.equals("modify")){
+		
+		request.setAttribute("member", memberDAO.getMember(memberDO.getId()));
+		pageContext.forward(viewPath + "memberModify.jsp");
+		
+	}else {
+		if(command != null && command.equals("changePasswd")) {
+			memberDAO.changePasswd(memberDO);
+		}
+		else if(command != null && command.equals("changeGrade")) {
+			memberDAO.changeGrade(memberDO);
+		}
+		else if(command != null && command.equals("deleteMember")) {
+			memberDAO.deleteMember(memberDO.getId());
+		}
+		
+		request.setAttribute("memberList", memberDAO.getAllMembers());		
+		pageContext.forward(viewPath + "memberList.jsp");
 	}
+	
 %>

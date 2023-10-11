@@ -4,6 +4,7 @@ public class MemberDO {
 
 	private String id;
 	private String passwd;
+	private String newPasswd;
 	private String name;
 	private String regdate;
 	private int grade;
@@ -26,6 +27,14 @@ public class MemberDO {
 
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+	}
+	
+	public String getNewPasswd() {
+		return newPasswd;
+	}
+
+	public void setNewPasswd(String newPasswd) {
+		this.newPasswd = newPasswd;
 	}
 
 	public String getName() {

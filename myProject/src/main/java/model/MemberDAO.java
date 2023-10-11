@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.*;
 
 public class MemberDAO {
-
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement pstmt;
@@ -16,28 +15,23 @@ public class MemberDAO {
 		String jdbc_url = "jdbc:oracle:thin:@localhost:1521:XE";
 		
 		try {
-			// 에러가 발생할수있는 코드
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, "scott", "tiger");
-			
-			System.out.println("JDBC 연결 성공!");
 		}
 		catch(Exception e) {
-			System.out.println("JDBC 연결 실패!");
 			e.printStackTrace();
 		}
 	}
 	
 	public MemberDO getMember(String id) {
 		MemberDO member = null;
-		this.sql = "select id, passwd, name, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as regdate, grade" +
-		           " from member where id = ?";
+		this.sql = "select id, passwd, name, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as regdate, grade " +
+				   "from member where id = ?";
 		
 		try {
 			this.pstmt = conn.prepareStatement(sql);
 			
 			this.pstmt.setString(1, id);
-			
 			rs = this.pstmt.executeQuery();
 			
 			if(this.rs.next()) {
@@ -49,15 +43,23 @@ public class MemberDAO {
 				member.setRegdate(this.rs.getString("regdate"));
 				member.setGrade(this.rs.getInt("grade"));
 			}
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				if(!pstmt.isClosed()) {
+					pstmt.close();					
+				}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}		
 		
 		return member;
 	}
-	
 	
 	public int insertMember(MemberDO member) throws Exception {
 		int rowCount = 0;
@@ -113,6 +115,7 @@ public class MemberDAO {
 		ArrayList<MemberDO> memberList = new ArrayList<MemberDO>();
 		this.sql = "select id, name, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as regdate"
 				+ " from member order by regdate";
+		
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
@@ -124,17 +127,101 @@ public class MemberDAO {
 				member.setId(this.rs.getString("id"));
 				member.setName(this.rs.getString("name"));
 				member.setRegdate(this.rs.getString("regdate"));
-			
+				
 				memberList.add(member);
 			}
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				if(!stmt.isClosed()) {
+					stmt.close();					
+				}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		return memberList;
 	}
+	
+	public int changePasswd(MemberDO member) {
+		int rowCount = 0;
+		this.sql = "update member set passwd = ? where id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getNewPasswd());
+			pstmt.setString(2,  member.getId());
+			
+			rowCount = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(!pstmt.isClosed()) {
+					pstmt.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return rowCount;
+	}
+	
+	public int changeGrade(MemberDO member) {
+		int rowCount = 0;
+		this.sql = "update member set grade = ? where id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member.getGrade());
+			pstmt.setString(2,  member.getId());
+			
+			rowCount = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(!pstmt.isClosed()) {
+					pstmt.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return rowCount;
+	}
+	
+	public int deleteMember(String id) {
+		int rowCount = 0;
+		this.sql = "delete from member where id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rowCount = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(!pstmt.isClosed()) {
+					pstmt.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return rowCount;
+	}
+	
 	
 	public void closeConn() {
 		try {
@@ -146,5 +233,4 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	
 }
