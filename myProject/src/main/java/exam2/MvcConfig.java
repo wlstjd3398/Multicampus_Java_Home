@@ -22,6 +22,6 @@ public class MvcConfig implements WebMvcConfigurer {
 	// 주로 JSP 파일과 같은 뷰 템플릿을 해석하고 렌더링하는 데 사용
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-		registry.jsp("/WEB-INF/views/", ".jsp");
+		registry.jsp("/WEB-INF/views/exam2/", ".jsp");
 	}
 }
