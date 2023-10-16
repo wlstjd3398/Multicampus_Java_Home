@@ -19,9 +19,14 @@
   	</init-param>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
-  		<param-value>
+  		<!--  <param-value>
   			exam2.MvcConfig
   			exam2.ControllerConfig
+  		</param-value>
+  		-->
+  		<param-value>
+  			step2.Step2MvcConfig
+  			step2.Step2ControllerConfig
   		</param-value>
   	</init-param>
   	<load-on-startup>1</load-on-startup>
